@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Player</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-image: url('_1f531dac-e6ce-48de-9df9-12da734cb5c2.jpeg');
+            background-size: cover;
+            background-position: center;
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header-block {
+            background-color: #006400;
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+
+        .header-block img {
+            width: 50px;
+            height: 50px;
+            vertical-align: middle;
+            margin-left: 10px;
+        }
+
+        .header-block h1 {
+            display: inline-block;
+            vertical-align: middle;
+            margin: 0;
+            font-size: 1.5em;
+            font-weight: bold;
+           
+        }
+        
+
+        .video-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            padding: 20px;
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-top: 56.25%;
+            margin-bottom: 20px;
+        }
+
+        .video-wrapper video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .video-info {
+            font-size: 1.2em;
+            line-height: 1.6;
+            font-weight: bold;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .video-info h2 {
+            font-size: 2em;
+            margin-top: 0;
+            font-weight: bold;
+        }
+
+        .like-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            font-size: 1.2em;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .like-count, .viewer-count {
+            font-size: 1.2em;
+            margin-top: 5px;
+            display: inline-block;
+            vertical-align: middle;
+            margin-left: 10px;
+        }
+
+        .footer-block {
+            background-color: #000;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            border: 5px solid #ffd700;
+        }
+
+        .marquee-text {
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .marquee-text p {
+            display: inline-block;
+            animation: marquee 20s linear infinite;
+            font-weight: bold;
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+    </style>
+</head>
+<body>
+
+<div class="header-block">
+    <h1>TUPAI MINI <img src="PP MY CHANNEL-fotor-20240710183026.png" alt="Logo" /></h1>
+</div>
+
+<div class="video-container">
+    <div class="video-wrapper">
+        <video controls preload="metadata" controlsList="nodownload">
+            <source src="1.mp4" type="video/mp4">
+        </video>
+    </div>
+    <div class="video-info">
+        <h2>WINDOWS 2003 #part1</h2>
+        <p>Penjelasan materi pertemuan 14  Oleh Hari suryantoro,selamat menyaksikan!! </p>
+        <button class="like-button" onclick="likeVideo(1)"><i class="fas fa-heart"></i> Like</button>
+        <span class="like-count" id="like-count-1">1,000,000,000</span>
+        <span class="viewer-count" id="viewer-count-1"><i class="fas fa-eye"></i> 1,000</span>
+    </div>
+</div>
+
+<div class="video-container">
+    <div class="video-wrapper">
+        <video controls preload="metadata" controlsList="nodownload">
+            <source src="2.mp4" type="video/mp4">
+        </video>
+    </div>
+    <div class="video-info">
+        <h2>Windows 2003 #Part2</h2>
+        <p>Penjelasan materi pertemuan 14  Oleh Hari suryantoro,selamat menyaksikan!!</p>
+        <button class="like-button" onclick="likeVideo(2)"><i class="fas fa-heart"></i> Like</button>
+        <span class="like-count" id="like-count-2">1,000,000,000</span>
+        <span class="viewer-count" id="viewer-count-2"><i class="fas fa-eye"></i> 1,000</span>
+    </div>
+</div>
+
+<div class="footer-block">
+    <div class="marquee-text">
+        <p>Terima kasih telah mengunjungi website kami! SEMOGA BERMANFAAT !!</p>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+<script>
+    // Simulasi jumlah likes statis (1 miliar)
+    var likesCount1 = 1000000000;
+    var likesCount2 = 1000000000;
+
+    // Fungsi untuk menambah jumlah likes
+    function likeVideo(videoId) {
+        var likeCount = document.getElementById('like-count-' + videoId);
+        if (videoId === 1) {
+            likesCount1++;
+            likeCount.textContent = likesCount1.toLocaleString();
+        } else if (videoId === 2) {
+            likesCount2++;
+            likeCount.textContent = likesCount2.toLocaleString();
+        }
+    }
+
+    // Simulasi jumlah views (antara 1000 dan 9999 setiap 5 detik)
+    setInterval(function() {
+        var viewerCount1 = document.getElementById('viewer-count-1');
+        var viewerCount2 = document.getElementById('viewer-count-2');
+
+        var randomViewers1 = Math.floor(Math.random() * (9999 - 1000 + 1)) + 1000;
+        var randomViewers2 = Math.floor(Math.random() * (9999 - 1000 + 1)) + 1000;
+
+        viewerCount1.innerHTML = '<i class="fas fa-eye"></i> ' + randomViewers1.toLocaleString();
+        viewerCount2.innerHTML = '<i class="fas fa-eye"></i> ' + randomViewers2.toLocaleString();
+    }, 5000); // Update setiap 5 detik
+</script>
+
+</body>
+</html>
